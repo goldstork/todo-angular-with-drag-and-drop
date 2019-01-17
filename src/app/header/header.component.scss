@@ -1,0 +1,19 @@
+.header {
+	background-color: blueviolet;
+	color: white;
+	padding: 12px 8px;
+}
+
+.menu {
+	display: flex;
+	margin-bottom: 0;
+
+	&__item {
+		list-style: none;
+		padding: 0px 10px;
+
+		a {
+			color: inherit;
+		}
+	}
+}

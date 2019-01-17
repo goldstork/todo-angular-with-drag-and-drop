@@ -1,0 +1,26 @@
+<div class="container">
+	<h1 class="text-center text-primary">Todo App</h1>
+	<form [formGroup]="createTodoForm" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<div class="input-group-prepend">
+				<input type="text" class="form-control" placeholder="Todo title" formControlName="title" />
+			</div>
+			<div class="input-group-prepend">
+				<textarea class="form-control" placeholder="Todo description" formControlName="desc"></textarea>
+			</div>
+			<button type="submit" class="btn">Add</button>
+		</div>
+	</form>
+
+	<div class="columns">
+		<div class="column" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todos" [cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="drop($event)">
+			<h2>Todos</h2>
+			<app-card class="card" *ngFor="let todo of todos" cdkDrag [title]="todo.title" [desc]="todo.desc"></app-card>
+		</div>
+
+		<div class="column" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]" (cdkDropListDropped)="drop($event)">
+			<h2>Done</h2>
+			<app-card class="card" *ngFor="let todo of done" cdkDrag [title]="todo.title" [desc]="todo.desc"></app-card>
+		</div>
+	</div>
+</div>
